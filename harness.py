@@ -9,6 +9,7 @@ from os import makedirs
 from os.path import exists
 from abc import ABC, abstractmethod
 
+faillist = []
 
 class AbstractTestScaffold(ABC):
     """ABC for test scaffold"""
@@ -41,10 +42,14 @@ async def run_test_wrapper(interpreter, test_case, timeout):
     try:
         async with asyncio.timeout(timeout):
             result = await asyncio.to_thread(run_test, interpreter, test_case)
+            if result == 0:
+                global faillist
+                faillist.append(test_case["srcfile"])
             print(f' {"PASSED" if result else "FAILED"}')
             return result
     except asyncio.TimeoutError:
         print("TIMED OUT")
+        faillist.append(test_case["srcfile"])
         return 0
 
 
@@ -66,6 +71,11 @@ async def run_all_tests(interpreter, tests, timeout_per_test=5):
         for test in tests
     ]
     print(f"{get_score(results)}/{len(tests)} tests passed.")
+    global faillist
+    if len(faillist) > 0:
+        print("Failed files: ")
+    for f in faillist:
+        print(f)
     return results
 
 
