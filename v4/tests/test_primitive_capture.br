@@ -1,0 +1,14 @@
+func main() {
+ c = 5;
+ /* d captures object c by object reference */ 
+ d = lambda() { c = 10; };
+
+ d();   
+ print(c);  /* prints 5, since closure modified copy of variable c */
+}
+
+/*
+*OUT*
+5
+*OUT*
+*/

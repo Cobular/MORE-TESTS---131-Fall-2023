@@ -1,0 +1,11 @@
+func main() {
+    if (main) {
+        print("Shouldn't run!");
+    }
+}
+
+/*
+*OUT*
+ErrorType.TYPE_ERROR
+*OUT*
+*/

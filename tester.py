@@ -24,9 +24,7 @@ class TestScaffold(AbstractTestScaffold):
         self.interpreter_lib = interpreter_lib
 
     def setup(self, test_case):
-        srcfile = itemgetter("srcfile")(
-            test_case
-        )
+        srcfile = itemgetter("srcfile")(test_case)
 
         with open(srcfile, encoding="utf-8") as handle:
             prog_lines = handle.readlines()
@@ -52,7 +50,6 @@ class TestScaffold(AbstractTestScaffold):
             interpreter.run(program)
         except Exception as exception:  # pylint: disable=broad-except
             if expect_failure:
-
                 error_type, _ = interpreter.get_error_type_and_line()
                 received = [f"{error_type}"]
 
@@ -84,7 +81,6 @@ class TestScaffold(AbstractTestScaffold):
             print(interpreter.get_output())
 
         return int(passed)
-
 
     def __extract_test_data(self, program, tag):
         in_soln = False
@@ -125,6 +121,7 @@ def __generate_test_suite(version, successes, failures):
         True,
     )
 
+
 def __get_file_names(folder_path):
     files_in_folder = listdir(folder_path)
     filenames = [file.split(".")[0] for file in files_in_folder]
@@ -141,6 +138,7 @@ def generate_test_suite_v1():
         fails,
     )
 
+
 def generate_test_suite_v2():
     """wrapper for generate_test_suite for v2"""
     tests = __get_file_names(getcwd() + "/v2/tests/")
@@ -151,6 +149,7 @@ def generate_test_suite_v2():
         fails,
     )
 
+
 def generate_test_suite_v3():
     """wrapper for generate_test_suite for v3"""
     tests = __get_file_names(getcwd() + "/v3/tests/")
@@ -160,6 +159,18 @@ def generate_test_suite_v3():
         tests,
         fails,
     )
+
+
+def generate_test_suite_v4():
+    """wrapper for generate_test_suite for v4"""
+    tests = __get_file_names(getcwd() + "/v4/tests/")
+    fails = __get_file_names(getcwd() + "/v4/fails/")
+    return __generate_test_suite(
+        4,
+        tests,
+        fails,
+    )
+
 
 async def main():
     """main entrypoint: argparses, delegates to test scaffold, suite generator, gradescope output"""
@@ -178,6 +189,8 @@ async def main():
             tests = generate_test_suite_v2()
         case "3":
             tests = generate_test_suite_v3()
+        case "4":
+            tests = generate_test_suite_v4()
         case _:
             raise ValueError("Unsupported version; expect one of {1, 2}")
 

@@ -1,0 +1,118 @@
+func main() {
+    foo = lambda(ref x) {if (x<6) {x=x+1; foo(x);}};
+    b = 2;
+    foo(b);
+    print(b);
+
+    foo = lambda(ref x) {x = x + "hello";};
+    b = "bye";
+    foo(b);
+    print(b);
+
+    foo = lambda(ref x) {x = !x;};
+    b = false;
+    foo(b);
+    print(b);
+
+    foo = lambda(ref x, y) {x = !x; y = y-1;};
+    b = false;
+    a = false;
+    foo(a, b);
+    print(a, b);
+
+    foo = lambda(ref f) {f(b);};
+    a = lambda(ref m) {m = m+1;};
+    foo(a);
+    print(b);
+
+    foo = lambda(ref x) {return x;};
+    b = false;
+    m = foo(a);
+    print(m != a);
+    m = foo(b);
+    print(m == b);
+    print(m != a);
+    print(m != some_func);
+    print("hey" == some_func());
+    print(some_func != a);
+    t = some_func;
+    print(t == some_func);
+    foo_copy = foo(foo);
+    print(foo_copy != foo);
+    some_func_copy = foo(some_func);
+    print(some_func != some_func_copy);
+    print(some_func() == some_func_copy());
+    t_copy = foo(t);
+    print(t_copy != some_func);
+    print(t_copy != some_func_copy);
+
+    capture_x = lambda(ref y) {y = x;};
+    x = 3;
+    y = 0;
+    capture_x(y);
+    print(y==3);
+    x = foo;
+    capture_x(y);
+    x = "not_foo";
+    print(y == foo);
+
+    copy_of_anon = foo(lambda(ref x) {x = x+1;});
+    n = 0;
+    copy_of_anon(n);
+    print(n == 1);
+
+    b = 2;
+    test = lambda(ref x) {b = 3;}; 
+    test(b);
+    print(b == 2);
+    test = lambda(ref b) {b = 3;}; 
+    test(b);
+    print(b == 3);
+
+    so_func = lambda() {return "hey";};
+    another = lambda(ref fun) {fun = fun() + " you";};
+    another(so_func);
+    print(so_func=="hey you");
+
+    l = 2;
+    m = 0;
+    idk = lambda(ref m) {idk2(l, m); print(l==2);};
+    idk2 = lambda(l, ref m) {m = m+1; l = l+1; print(l, m);};
+    idk(m);
+    print(l, m);
+}
+
+func some_func() {
+    return "hey";
+}
+
+/*
+*OUT*
+6
+byehello
+true
+truefalse
+false
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+31
+true
+21
+*OUT*
+*/

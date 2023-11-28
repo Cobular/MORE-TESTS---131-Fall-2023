@@ -1,0 +1,16 @@
+func main() {
+  x = @;
+  x.a = 10;
+  z = x;
+  y = @;
+  y.a = 10;
+
+  if (x == x && x == z) { print("This will print out!"); }
+  if (x == y) { print("This will not print!"); }
+}
+
+/*
+*OUT*
+This will print out!
+*OUT*
+*/

@@ -1,0 +1,15 @@
+func main() {
+  p = @;
+
+  c = @;
+  c.proto = p;
+
+  p.x = 10;    /* change proto object after c refers to p */
+  print(c.x);  /* change is visible in c, this prints 10 */
+}
+
+/*
+*OUT*
+10
+*OUT*
+*/

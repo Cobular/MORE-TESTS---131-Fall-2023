@@ -1,0 +1,17 @@
+func main() { 
+c = @;
+c.x = 5;
+ /* d captures object c by object reference */
+d = lambda() {
+c = 5; 
+c = c + 1;
+};
+ d();
+ print(c);
+}
+
+/*
+*OUT*
+6
+*OUT*
+*/

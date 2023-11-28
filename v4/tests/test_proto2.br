@@ -1,0 +1,14 @@
+func main() {
+    p = @;
+    
+    c = @;
+    c.proto = p;
+
+    print(p == c.proto);
+}
+
+/*
+*OUT*
+true
+*OUT*
+*/

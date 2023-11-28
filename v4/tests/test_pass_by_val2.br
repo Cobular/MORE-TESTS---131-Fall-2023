@@ -1,0 +1,20 @@
+func foo(obj) {
+    obj.y();
+    obj.y();
+}
+
+func main() {
+    x = @;
+    z = 0;
+    x.y = lambda() {z = z + 1; print(z);};
+    foo(x);
+    x.y();
+}
+
+/*
+*OUT*
+1
+2
+1
+*OUT*
+*/

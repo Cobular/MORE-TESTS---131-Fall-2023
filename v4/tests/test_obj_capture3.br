@@ -1,0 +1,18 @@
+func main() {
+ c = @;
+ c.x = 5;
+
+ /* d captures object c by object reference */
+ d = lambda() {
+   c = @;  /* changes original c variable, pointing it at a new obj */
+   c.y = 10; /* adds field y to updated object */
+ };
+
+ d();
+ print(c.y); /* prints 10 */
+}
+/*
+*OUT*
+10
+*OUT*
+*/

@@ -1,0 +1,10 @@
+func main() {
+    p = @;
+    print(p.proto);
+}
+
+/*
+*OUT*
+ErrorType.NAME_ERROR
+*OUT*
+*/

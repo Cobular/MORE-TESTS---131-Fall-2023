@@ -1,0 +1,20 @@
+func foo() { 
+  print(this.x);      /* this refers to object q in the call to q.foo() */
+  this.y = 20;
+}
+
+func main() {
+  q = @;
+  q.x = 10;
+  q.foo = foo;        /* q.foo points at our foo function */
+
+  q.foo();            /* prints 10, then sets q.y to 20 */
+  print(q.y);         /* prints 20 */
+}
+
+/*
+*OUT*
+10
+20
+*OUT*
+*/

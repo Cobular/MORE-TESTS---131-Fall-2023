@@ -1,0 +1,20 @@
+func main() {
+    x = 0;
+    p = @;
+    p.foo = lambda() { x = x + 1; print(x); };
+
+    c = @;
+    c.proto = p;
+
+    c.foo();
+    c.foo();
+    p.foo();
+}
+
+/*
+*OUT*
+1
+2
+3
+*OUT*
+*/

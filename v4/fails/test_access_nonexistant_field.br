@@ -1,0 +1,10 @@
+func main() {
+    x = @;
+    print(x.y);
+}
+
+/*
+*OUT*
+ErrorType.NAME_ERROR
+*OUT*
+*/

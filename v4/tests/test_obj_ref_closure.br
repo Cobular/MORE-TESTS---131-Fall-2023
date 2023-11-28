@@ -1,0 +1,30 @@
+func main() {
+  a = @;
+  cap = 0;
+  b = lambda() { cap = cap + 1; print(cap); };
+  a.m = b;  /* points at same closure that b does */
+  a.m();    /* prints 1 */
+  a.m();    /* prints 2 */
+  b();      /* prints 3, since a.m and b point to same closure  */
+
+  q = @;
+  q.val = 10;
+
+  c = @;
+  c.field = q;   /* b.field points at original object, not a copy */
+
+  tmp = c.field; /* tmp now points at same object as a does */
+  tmp.val = 5;   /* setting tmp.val is really setting a.val */
+
+  print(q.val);  /* prints 5 */
+
+}
+
+/*
+*OUT*
+1
+2
+3
+5
+*OUT*
+*/

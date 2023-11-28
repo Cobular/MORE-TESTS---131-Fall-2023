@@ -1,0 +1,16 @@
+func foo(obj) {
+    obj.y = 0;
+}
+
+func main() {
+    x = @;
+    x.y = 10;
+    foo(x);
+    print(x.y);
+}
+
+/*
+*OUT*
+10
+*OUT*
+*/

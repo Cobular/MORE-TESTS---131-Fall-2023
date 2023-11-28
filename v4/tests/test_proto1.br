@@ -1,0 +1,22 @@
+func main() {
+   p = @;
+   p.x = 10;
+   p.hello = lambda() { print("Hello world!"); };
+
+
+   c = @;
+   c.proto = p; /* c is a child of p, inherits x and hello() */
+   c.y = 20;    /* c may have its own fields/methods too */
+
+   c.hello(); /* prints "Hello world!" */
+   print(c.x); /* prints 10 */
+   print(c.y); /* prints 20 */
+}
+
+/*
+*OUT*
+Hello world!
+10
+20
+*OUT*
+*/

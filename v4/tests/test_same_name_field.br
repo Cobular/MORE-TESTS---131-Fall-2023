@@ -1,0 +1,23 @@
+func foo() {
+    return 10;
+}
+
+func main() {
+  x = @;
+  y = 11;
+  x.foo = 5;   /* this is legal; the two foos are distinct */
+  x.y = 0;
+  print(foo());
+  print(x.foo);
+  print(y);
+  print(x.y);
+}
+
+/*
+*OUT*
+10
+5
+11
+0
+*OUT*
+*/

@@ -1,0 +1,12 @@
+func main() {
+  x = @;
+  y = x;           /* x and y refer to the same object in memory */
+  y.field = 5;
+  print(x.field);  /* prints 5 */
+}
+
+/*
+*OUT*
+5
+*OUT*
+*/

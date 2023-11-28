@@ -1,0 +1,13 @@
+func main() {
+  y = @;
+  y.x = 10;
+  y.foo = lambda() { this = @; this.y = 10; };
+  y.foo();
+  print(y.x); 
+}
+
+/*
+*OUT*
+ErrorType.NAME_ERROR
+*OUT*
+*/

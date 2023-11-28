@@ -10,12 +10,17 @@ func bar(b) {
     print(b);
 }
 
+func hmm() {
+    print("USC");
+}
+
 func main() {
     test = 10;
 	foo(bar, test);
-	some = main;
+    
+	some = hmm;
 	ucla(some);
-	print(some == main);
+	print(some == hmm);
 	print(some == lambda() {print("UCLA");});
     some();
 }

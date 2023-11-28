@@ -1,0 +1,19 @@
+func main() {
+    p = @;
+    p.x = 10;
+
+    c = @;
+    c.proto = p;
+
+    b = @;
+    b.x = 0;
+    c.proto = b;
+
+    print(c.x);
+}
+
+/*
+*OUT*
+0
+*OUT*
+*/

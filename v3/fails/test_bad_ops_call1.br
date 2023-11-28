@@ -1,0 +1,10 @@
+func main () {
+    x = main;
+    x(10);
+}
+
+/*
+*OUT*
+ErrorType.TYPE_ERROR
+*OUT*
+*/

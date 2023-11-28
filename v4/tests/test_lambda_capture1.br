@@ -1,0 +1,15 @@
+func main() {
+ c = lambda() { print(1); };
+
+ /* d captures closure c by reference */
+ d = lambda() { c = lambda() { print(2); }; };
+
+ d();
+ c();  /* prints 2, since c was captured by reference by d */
+}
+
+/*
+*OUT*
+2
+*OUT*
+*/

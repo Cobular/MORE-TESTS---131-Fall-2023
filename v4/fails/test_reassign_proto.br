@@ -1,0 +1,19 @@
+func main() {
+    p = @;
+    p.x = 10;
+
+    c = @;
+    c.proto = p;
+
+    b = @;
+
+    c.proto = b;
+
+    print(c.x);
+}
+
+/*
+*OUT*
+ErrorType.NAME_ERROR
+*OUT*
+*/

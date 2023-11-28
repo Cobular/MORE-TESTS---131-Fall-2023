@@ -1,0 +1,11 @@
+func main() {
+    x = @;
+    x.y = 5;
+    x.y();
+}
+
+/*
+*OUT*
+ErrorType.TYPE_ERROR
+*OUT*
+*/

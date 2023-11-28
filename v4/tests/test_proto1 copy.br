@@ -1,0 +1,14 @@
+func main() {
+  person = @;
+  person.name = "anon";
+  person.say_hi = lambda() { print(this.name," says hi!"); };
+  carey = @;
+  carey.proto = person;
+  carey.say_hi();
+}
+
+/*
+*OUT*
+anon says hi!
+*OUT*
+*/

@@ -1,0 +1,18 @@
+func main() {
+   p = @;
+   p.x = 10;
+   
+   c = @;
+   c.proto = p; /* c is a child of p, inherits x*/
+   c.x = 20;    /* c.x now shadows p.x when we reference x thru c */
+
+   print(c.x); /* prints 20 */
+   print(p.x); /* still prints 10 */
+}
+
+/*
+*OUT*
+20
+10
+*OUT*
+*/

@@ -1,0 +1,21 @@
+func main() {
+  p = @;
+  p.foo = lambda() { 
+    this.bar(5);  /* calls bar() even though bar() not defined in p */
+    print(this.x); /* prints 10, even tho x not defined in p */
+  };
+
+  c = @;
+  c.proto = p;
+  c.bar = lambda(x) { print(x); };
+  c.x = 10;
+
+  c.foo();  /* the call to bar() works! this prints 5, then 10 */
+  p.bar();  /* NAME_ERROR - bar is not known to object p */
+}
+
+/*
+*OUT*
+ErrorType.NAME_ERROR
+*OUT*
+*/
