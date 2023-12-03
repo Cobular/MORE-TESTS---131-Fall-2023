@@ -1,0 +1,50 @@
+func Node() {
+    __out__ = @;
+    __out__.val = nil;
+    __out__.l = nil;
+    __out__.r = nil;
+    return __out__;
+}
+
+func Node(a) {
+    __out__ = @;
+    __out__.val = a;
+    __out__.l = nil;
+    __out__.r = nil;
+    return __out__;
+}
+
+func Node(a,l,r) {
+    __out__ = @;
+    __out__.val = a;
+    __out__.l = l;
+    __out__.r = r;
+    return __out__;
+}
+
+func bfs(tree) {
+    print(tree.val);
+    if (tree.l != nil) {
+        bfs(tree.l);
+    }
+    if (tree.r != nil) {
+        bfs(tree.r);
+    }
+}
+
+func main() {
+    head = Node(1, Node(2, Node(3), Node(4)), Node(5, Node(6), Node(7)));
+    bfs(head);
+}
+
+/*
+*OUT*
+1
+2
+3
+4
+5
+6
+7
+*OUT*
+*/
