@@ -1,0 +1,27 @@
+func main() {
+	e = @;
+	d = @;
+	c = @;
+	b = @;
+	a = @;
+	a.proto = nil;
+	b.proto = a;
+	c.proto = b;
+	d.proto = c;
+	e.proto = d;
+	protoptr = e;
+	while(protoptr != nil) {
+	    print("rah!");
+	    protoptr = protoptr.proto;
+	}
+}
+
+/*
+*OUT*
+rah!
+rah!
+rah!
+rah!
+rah!
+*OUT*
+*/
